@@ -6,7 +6,7 @@ notifications:
 script:   
 - cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
 - cmake --build _build --target install
-- cd artifacts
+- mkdir artifacts && cd artifacts
 - echo "text1 text2 text3" | ../_install/bin/demo
 - test -f default.log
 - echo "text1 text2 text3" | ../_install/bin/demo --output arg.log
