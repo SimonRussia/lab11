@@ -17,8 +17,13 @@ try {
     variables_map vm;
     store(parse_command_line(argc, argv, desc), vm);
 
-    if(exists("/Users/anisim_ovcharov/.config/demo.cfg"))
-    	store(parse_config_file<char>( "/Users/anisim_ovcharov/.config/demo.cfg", desc ), vm);
+    std::string gAddress = getenv("HOME");
+    gAddress += "/.config/demo.cfg";
+    const char* _gAddress = gAddress.c_str();
+
+
+    if(exists(gAddress))
+    	store(parse_config_file<char>( _gAddress, desc ), vm);
 
     notify(vm);
 
