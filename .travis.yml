@@ -8,8 +8,7 @@ script:
 - cmake --build _build --target install
 - cd artifacts
 - echo "text1 text2 text3" | ../_install/bin/demo
-- test -f default.log 
-- mkdir ${HOME}/.config
+- test -f default.log
 - echo "output=config.log" > ${HOME}/.config/demo.cfg
 - echo "text1 text2 text3" | ../_install/bin/demo
 - test -f config.log 
