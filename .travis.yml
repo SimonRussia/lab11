@@ -6,14 +6,15 @@ notifications:
 script:   
 - cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install
 - cmake --build _build --target install
-- cd artifacts
+- mkdir -p artifacts && cd artifacts
 - echo "text1 text2 text3" | ../_install/bin/demo
 - test -f default.log
-- echo "text1 text2 text3" | ../_install/bin/demo --output arg.log
-- test -f arg.log
+- mkdir ${HOME}/.config
 - echo "output=config.log" > ${HOME}/.config/demo.cfg
 - echo "text1 text2 text3" | ../_install/bin/demo
-- test -f config.log 
+- test -f config.log
 - export DEMO_OUTPUT=env.log
 - echo "text1 text2 text3" | ../_install/bin/demo
-- test -f env.log 
+- test -f env.log
+- echo "text1 text2 text3" | ../_install/bin/demo --output arg.log
+- test -f arg.log
